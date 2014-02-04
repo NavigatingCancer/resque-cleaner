@@ -6,12 +6,14 @@
   </div>
 
   <% @type = 'klass' %>
+  <% @query_key = 'c' %>
   <%= erb File.read(ResqueCleaner::Server.erb_path("_stats.erb")) %>
 
   <div class="title clearfix">
     <h1>Job Exceptions Failed</h1>
   </div>
   <% @type = 'exception' %>
+  <% @query_key = 'ex' %>
   <%= erb File.read(ResqueCleaner::Server.erb_path("_stats.erb")) %>
 
   <% if @cleaner.limiter.on? %>

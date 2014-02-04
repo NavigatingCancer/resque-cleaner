@@ -118,18 +118,16 @@ module Resque
               index = @limiter.start_index + i - requeued
 
               value = redis.lindex(:failed, index)
-              redis.multi do
-                Job.create(queue||job['queue'], job['payload']['class'], *job['payload']['args'])
+              Job.create(queue||job['queue'], job['payload']['class'], *job['payload']['args'])
 
-                if clear_after_requeue
-                  # remove job
-                  # TODO: should use ltrim. not sure why i used lrem here...
-                  redis.lrem(:failed, 1, value)
-                else
-                  # mark retried
-                  job['retried_at'] = Time.now.strftime("%Y/%m/%d %H:%M:%S")
-                  redis.lset(:failed, @limiter.start_index+i, Resque.encode(job))
-                end
+              if clear_after_requeue
+                # remove job
+                # TODO: should use ltrim. not sure why i used lrem here...
+                redis.lrem(:failed, 1, value)
+              else
+                # mark retried
+                job['retried_at'] = Time.now.strftime("%Y/%m/%d %H:%M:%S")
+                redis.lset(:failed, @limiter.start_index+i, Resque.encode(job))
               end
 
               requeued += 1
