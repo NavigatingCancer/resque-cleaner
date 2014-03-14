@@ -6,5 +6,5 @@ group :test do
   gem 'rake'
   gem 'json'
   gem 'timecop'
-  gem 'rack-test'
+  gem "rack-minitest", git: "git://github.com/brandonweiss/rack-minitest.git"
 end
