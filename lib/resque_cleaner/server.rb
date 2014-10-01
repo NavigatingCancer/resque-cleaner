@@ -250,7 +250,7 @@ module ResqueCleaner
         ex: @exception,
         f: @from,
         t: @to,
-        regex: @regex
+        regex: @regex,
         q: @queue
       }.map {|key,value| "#{key}=#{URI.encode(value.to_s)}"}.join("&")
 
