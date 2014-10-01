@@ -169,7 +169,7 @@ module ResqueCleaner
 
           @klasses = cleaner.stats_by_class.keys
           @exceptions = cleaner.stats_by_exception.keys
-          @queues = cleaner.stats_by_queue.keys
+          @queues = cleaner.stats_by_queue.keys.sort
           @count = cleaner.select(&block).size
 
           erb File.read(ResqueCleaner::Server.erb_path('cleaner_list.erb'))
@@ -251,6 +251,7 @@ module ResqueCleaner
         f: @from,
         t: @to,
         regex: @regex
+        q: @queue
       }.map {|key,value| "#{key}=#{URI.encode(value.to_s)}"}.join("&")
 
       @list_url = "cleaner_list?#{params}"
