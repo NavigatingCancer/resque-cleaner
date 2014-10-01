@@ -39,6 +39,8 @@
           <input type="hidden" name="c" value="<%=@klass%>" />
           <input type="hidden" name="f" value="<%=@from%>" />
           <input type="hidden" name="t" value="<%=@to%>" />
+          <input type="hidden" name="q" value="<%=@queue%>" />
+          <input type="hidden" name="regex" value="<%=Rack::Utils.escape_html(@regex)%>" />
           <input type="hidden" name="p" value="<%=@paginate.page%>" />
           <input type="hidden" name="ex" value="<%=@exception%>" />
           <select id="form_action" name="action">
