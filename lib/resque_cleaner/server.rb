@@ -198,7 +198,8 @@ module ResqueCleaner
         end
 
         get '/crimson_cleanup' do
-          ::CrimsonCleanup.clean!
+          require 'crimson_cleanup'
+          CrimsonCleanup.clean!
         end
 
         get "/cleaner_dump" do
