@@ -11,9 +11,10 @@ class CrimsonCleanup
     Proc.new { |job| job['error'].include?('Cannot allocate memory') },
     Proc.new { |job| job['error'].include?('Adaptive Server is unavailable') },
   ]
+
   def clean!
     RETRY_CONDITIONS.each do |condition|
-      cleaner.requeue(true) condition
+      cleaner.requeue(true) { |job| condition.call(job) }
     end
   end
 
