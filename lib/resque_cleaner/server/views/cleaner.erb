@@ -5,6 +5,8 @@
     <h1>Group by class</h1>
   </div>
 
+  <a href="crimson_cleanup">Clean Up</a>
+
   <%= erb(
         File.read(ResqueCleaner::Server.erb_path("_stats.erb")),
         locals: {q: 'c', type: 'klass'}
