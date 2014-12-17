@@ -198,7 +198,7 @@ module ResqueCleaner
         end
 
         get '/crimson_cleanup' do
-          CrimsonCleanup.clean!
+          ::CrimsonCleanup.clean!
         end
 
         get "/cleaner_dump" do
