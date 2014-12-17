@@ -14,9 +14,11 @@ class CrimsonCleanup
     ]
 
     def clean!
+      requeued = 0
       RETRY_CONDITIONS.each do |condition|
-        cleaner.requeue(true) { |job| condition.call(job) }
+        requeued += cleaner.requeue(true) { |job| condition.call(job) }
       end
+      requeued
     end
 
     private
