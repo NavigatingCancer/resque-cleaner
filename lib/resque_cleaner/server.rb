@@ -201,7 +201,7 @@ module ResqueCleaner
           require 'crimson_cleanup'
           CrimsonCleanup.clean!
 
-          erb File.read(ResqueCleaner::Server.erb_path('cleaner.erb'))
+          redirect url_path(:cleaner)
         end
 
         get "/cleaner_dump" do
