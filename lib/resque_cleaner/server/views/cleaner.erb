@@ -5,8 +5,6 @@
     <h1>Group by class</h1>
   </div>
 
-  <button id="cleanup">Clean Up</button>
-
   <%= erb(
         File.read(ResqueCleaner::Server.erb_path("_stats.erb")),
         locals: {q: 'c', type: 'klass'}
@@ -34,17 +32,3 @@
     <%= erb File.read(ResqueCleaner::Server.erb_path("_limiter.erb")) %>
   <% end %>
 </div>
-
-<script>
-  $(document).ready(function(){
-    $('#cleanup').click(function(){
-      $.ajax({
-        url: 'crimson_cleanup',
-        success: function(data) {
-          alert('Number of jobs requeued: ' + JSON.parse(data).requeued);
-          window.location.reload();
-        }
-      });
-    });
-  });
-</script>
