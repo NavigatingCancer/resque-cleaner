@@ -2,3 +2,4 @@
 local_note.md
 Gemfile.lock
 test/dump.rdb
+test/stdout
