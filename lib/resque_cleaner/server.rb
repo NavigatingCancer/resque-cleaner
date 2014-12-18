@@ -198,7 +198,10 @@ module ResqueCleaner
         end
 
         get '/crimson_cleanup' do
-          CrimsonCleanup.clean!
+          require 'crimson_cleanup'
+          @requeued = CrimsonCleanup.clean!
+
+          { requeued: @requeued }.to_json
         end
 
         get "/cleaner_dump" do
