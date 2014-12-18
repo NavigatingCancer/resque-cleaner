@@ -41,7 +41,8 @@
       $.ajax({
         url: 'crimson_cleanup',
         success: function(data) {
-          console.log(data)
+          alert('Number of jobs requeued: ' + JSON.parse(data).requeued);
+          location.reload;
         }
       });
     });
