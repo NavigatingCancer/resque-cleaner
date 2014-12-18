@@ -42,7 +42,7 @@
         url: 'crimson_cleanup',
         success: function(data) {
           alert('Number of jobs requeued: ' + JSON.parse(data).requeued);
-          location.reload;
+          window.location.reload();
         }
       });
     });
